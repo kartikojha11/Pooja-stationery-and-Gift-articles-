@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pooja Stationers & Gift Articles</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#ff4d6d;
+  --secondary:#3a86ff;
+  --bg:#f8fbff;
+  --card:#ffffff;
+  --shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#fff3e8,#e9f5ff);
+  color:#333;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;border-radius:14px}
+
+/* Header */
+header{
+  position:sticky;top:0;z-index:999;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  padding:12px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-weight:700;
+  font-size:18px;
+  color:var(--primary);
+}
+nav{
+  display:flex;gap:14px;font-size:14px;font-weight:600;
+}
+nav a{padding:6px 10px;border-radius:20px}
+nav a:hover{background:#f1f5ff}
+
+/* Hero */
+.hero{
+  padding:48px 16px 40px;
+  text-align:center;
+}
+.hero h1{
+  margin:0;
+  font-size:30px;
+  color:var(--secondary);
+}
+.hero p{
+  font-size:16px;
+  margin:10px 0;
+}
+.cta-row{
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:18px;
+}
+.btn{
+  padding:12px 20px;
+  border-radius:30px;
+  font-weight:600;
+  font-size:14px;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  border:none;
+}
+.btn-primary{background:#25D366;color:#fff}
+.btn-outline{background:#fff;color:#333;border:1.5px solid #e3e8ff}
+
+/* Banner */
+.banner{
+  margin:10px 16px 0;
+  background:linear-gradient(135deg,#ffdde5,#e0ecff);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+.banner strong{color:#ff4d6d}
+
+/* Sections */
+.section{
+  padding:44px 16px 10px;
+  text-align:center;
+}
+.section h2{
+  margin:0 0 10px;
+  font-size:24px;
+  color:#222;
+}
+.section p{max-width:780px;margin:6px auto 0;font-size:15px}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:16px;
+  margin-top:20px;
+}
+.card{
+  background:var(--card);
+  padding:18px;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+}
+
+/* Products */
+.product{
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.product img{height:140px;object-fit:cover}
+.product h3{margin:4px 0}
+.product .actions{
+  display:flex;
+  gap:8px;
+  margin-top:6px;
+}
+.product .actions button{
+  flex:1;
+  padding:10px;
+  border-radius:20px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  background:#f1f5ff;
+}
+.product .actions button.primary{
+  background:#3a86ff;
+  color:white;
+}
+
+/* Wishlist Panel */
+.wishlist-btn{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  background:#3a86ff;
+  color:white;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  z-index:999;
+  cursor:pointer;
+}
+.wishlist-count{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  background:#ff4d6d;
+  color:white;
+  font-size:11px;
+  font-weight:700;
+  padding:3px 6px;
+  border-radius:50%;
+}
+
+.wishlist-panel{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  align-items:flex-end;
+  z-index:1000;
+}
+.wishlist-panel.active{display:flex}
+.wishlist-box{
+  background:white;
+  width:100%;
+  max-height:70%;
+  border-radius:22px 22px 0 0;
+  padding:16px;
+  overflow:auto;
+}
+.wishlist-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+.wishlist-item{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin:10px 0;
+}
+.wishlist-item img{
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:10px;
+}
+.wishlist-item button{
+  margin-left:auto;
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  padding:6px 10px;
+  border-radius:14px;
+  cursor:pointer;
+  font-size:12px;
+}
+
+/* About */
+.about-box{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  margin-top:20px;
+  text-align:center;
+}
+.about-links{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+}
+.about-links a{
+  font-weight:600;
+  color:#3a86ff;
+}
+
+/* Location */
+.map-box{
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  margin-top:20px;
+}
+.map-box iframe{
+  width:100%;
+  height:260px;
+  border:0;
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:30px 16px 90px;
+  font-size:13px;
+  color:#555;
+}
+
+/* Floating WhatsApp */
+.floating-wa{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  z-index:999;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
+  70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+
+/* Small devices */
+@media(max-width:480px){
+  .hero h1{font-size:24px}
+  nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🎀 Pooja Stationers</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#categories">Categories</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#location">Location</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <h1>Pooja Stationers & Gift Articles</h1>
+  <p>Your One-Stop Shop for Stationery, Gifts & Xerox Services</p>
+  <p>📍 Vatva, Ahmedabad</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://wa.me/918200304556" target="_blank">💬 WhatsApp Us</a>
+    <a class="btn btn-outline" href="#location">📍 Get Location</a>
+  </div>
+</section>
+
+<!-- Banner / Offer -->
+<div class="banner">
+  🎉 <strong>Offer Banner Area</strong> — New Offer coming soon.
+  
+</div>
+
+<!-- Categories -->
+<section id="categories" class="section">
+  <h2>Our Categories</h2>
+  <div class="grid">
+    <div class="card">✏️ School Stationery</div>
+    <div class="card">📒 Notebooks & Registers</div>
+    <div class="card">🎁 Gift Articles</div>
+    <div class="card">🎨 Art & Craft Supplies</div>
+    <div class="card">🖨 Xerox & Printing</div>
+    <div class="card">📎 Office Supplies</div>
+  </div>
+</section>
+
+<!-- Products -->
+<section id="products" class="section">
+  <h2>Popular Products</h2>
+  <p>Select items and add to wishlist — show them in shop or send on WhatsApp later.</p>
+  <div class="grid" id="productGrid">
+    <!-- Product Cards Generated by JS -->
+  </div>
+</section>
+
+<!-- About Us -->
+<section id="about" class="section">
+  <h2>About Us</h2>
+  <div class="about-box">
+    <div class="about-links">
+      <a href="https://www.instagram.com/pooja_stationers_gift_articles" target="_blank">📸 Instagram: @pooja_stationers_gift_articles</a>
+      <a href="tel:+918200304556">📞 Contact: 82003 04556</a>
+      <div>© 2026 Pooja Stationers & Gift Articles. All rights reserved.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<section id="location" class="section">
+  <h2>Visit Our Store</h2>
+  <p>
+    📍 <strong>Pooja Stationers and Gift Articles and Xerox</strong><br>
+    Gf-2, Shashi Avenue, Opp. Manthan 222,<br>
+    Vatva, Ahmedabad, Gujarat 382445
+  </p>
+
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://maps.google.com/?q=Pooja+Stationers+and+Gift+Articles+and+Xerox,+Gf-2+Shashi+Avenue,+Opp.+Manthan+222,+Vatva,+Ahmedabad,+Gujarat+382445" target="_blank">📍 Open in Google Maps</a>
+    <a class="btn btn-outline" href="tel:+918200304556">📞 Call Now</a>
+  </div>
+
+  <div class="map-box">
+    <iframe
+      src="https://www.google.com/maps?q=Pooja+Stationers+and+Gift+Articles+and+Xerox,+Gf-2+Shashi+Avenue,+Opp.+Manthan+222,+Vatva,+Ahmedabad,+Gujarat+382445&output=embed"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  © 2026 Pooja Stationers & Gift Articles · Vatva, Ahmedabad
+</footer>
+
+<!-- Floating WhatsApp -->
+<a class="floating-wa" href="https://wa.me/918200304556" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+
+<!-- Wishlist Floating Button -->
+<div class="wishlist-btn" onclick="toggleWishlist()">❤️
+  <div class="wishlist-count" id="wishlistCount">0</div>
+</div>
+
+<!-- Wishlist Panel -->
+<div class="wishlist-panel" id="wishlistPanel" onclick="closeWishlist(event)">
+  <div class="wishlist-box">
+    <div class="wishlist-header">
+      <strong>Your Wishlist</strong>
+      <button class="btn btn-outline" onclick="toggleWishlist()">Close</button>
+    </div>
+    <div id="wishlistItems"></div>
+    <div style="margin-top:14px;text-align:center">
+      <a class="btn btn-primary" id="sendWishlistBtn" target="_blank">💬 Send Wishlist on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================
+   PRODUCT DATA (EDIT HERE)
+========================= */
+const products = [
+  { id:1, name:"Gel Pens Pack", img:"images/logo.png" },
+  { id:2, name:"Ball Pens Set", img:"images/logo.png" },
+  { id:3, name:"Pencils Pack", img:"images/logo.png" },
+  { id:4, name:"Erasers & Sharpeners", img:"images/logo.png" },
+  { id:5, name:"Geometry Box", img:"images/logo.png" },
+  { id:6, name:"Sketch Pens Set", img:"images/logo.png" },
+  { id:7, name:"Crayons Pack", img:"images/logo.png" },
+  { id:8, name:"Water Colour Set", img:"images/logo.png" },
+  { id:9, name:"Drawing Book", img:"images/logo.png" },
+  { id:10, name:"School Notebooks", img:"images/logo.png" },
+  { id:11, name:"Long Notebooks", img:"images/logo.png" },
+  { id:12, name:"Graph Notebook", img:"images/logo.png" },
+  { id:13, name:"Diaries & Planners", img:"images/logo.png" },
+  { id:14, name:"Files & Folders", img:"images/logo.png" },
+  { id:15, name:"Office Paper Rim", img:"images/logo.png" },
+  { id:16, name:"Envelopes Pack", img:"images/logo.png" },
+  { id:17, name:"Glue & Adhesives", img:"images/logo.png" },
+  { id:18, name:"Sticky Notes", img:"images/logo.png" },
+  { id:19, name:"Gift Wrapping Paper", img:"images/logo.png" },
+  { id:20, name:"Birthday Gift Items", img:"images/logo.png" }
+
+
+];
+
+/* =========================
+   RENDER PRODUCTS
+========================= */
+const grid = document.getElementById("productGrid");
+products.forEach(p=>{
+  const card = document.createElement("div");
+  card.className = "card product";
+  card.innerHTML = `
+    <img src="${p.img}" alt="${p.name}">
+    <h3>${p.name}</h3>
+    <div class="actions">
+      <button class="primary" onclick="addToWishlist(${p.id})">❤️ Wishlist</button>
+      <button onclick="addToCart(${p.id})">🛒 Cart</button>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+/* =========================
+   WISHLIST / CART LOGIC
+========================= */
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function saveWishlist(){
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  updateWishlistUI();
+}
+
+function addToWishlist(id){
+  if(!wishlist.includes(id)){
+    wishlist.push(id);
+    saveWishlist();
+    alert("Added to wishlist ❤️");
+  }else{
+    alert("Already in wishlist 👍");
+  }
+}
+
+function removeFromWishlist(id){
+  wishlist = wishlist.filter(x=>x!==id);
+  saveWishlist();
+}
+
+function updateWishlistUI(){
+  const count = document.getElementById("wishlistCount");
+  const listBox = document.getElementById("wishlistItems");
+  count.textContent = wishlist.length;
+  listBox.innerHTML = "";
+
+  if(wishlist.length === 0){
+    listBox.innerHTML = "<p style='text-align:center'>No items in wishlist.</p>";
+  }
+
+  wishlist.forEach(id=>{
+    const p = products.find(x=>x.id===id);
+    const row = document.createElement("div");
+    row.className = "wishlist-item";
+    row.innerHTML = `
+      <img src="${p.img}">
+      <div>${p.name}</div>
+      <button onclick="removeFromWishlist(${p.id})">Remove</button>
+    `;
+    listBox.appendChild(row);
+  });
+
+  // Update WhatsApp message
+  const msg = wishlist.map(id=>{
+    const p = products.find(x=>x.id===id);
+    return "• " + p.name;
+  }).join("%0A");
+
+  const waBtn = document.getElementById("sendWishlistBtn");
+  waBtn.href = "https://wa.me/918200304556?text=Hello%20Pooja%20Stationers,%20I%20am%20interested%20in:%0A" + msg;
+}
+
+function toggleWishlist(){
+  document.getElementById("wishlistPanel").classList.toggle("active");
+}
+
+function closeWishlist(e){
+  if(e.target.id === "wishlistPanel"){
+    toggleWishlist();
+  }
+}
+
+/* Dummy cart function (future use) */
+function addToCart(id){
+  addToWishlist(id);
+}
+
+/* Init */
+updateWishlistUI();
+</script>
+
+</body>
+</html>

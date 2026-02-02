@@ -351,11 +351,15 @@ footer{
   <h2>Shop by Category</h2>
 
   <div class="category-buttons">
-    <button class="active" onclick="showCategory('popular', this)">🔥 Popular</button>
+    
     <button onclick="showCategory('school', this)">✏️ School Stationery</button>
     <button onclick="showCategory('gift', this)">🎁 Gift Articles</button>
     <button onclick="showCategory('art', this)">🎨 Art & Craft</button>
     <button onclick="showCategory('office', this)">📎 Office Supplies</button>
+    <button onclick="showCategory('sports', this)">🏏 Sports</button>
+<button onclick="showCategory('decor', this)">🎀 Decoration</button>
+<button onclick="showCategory('custom', this)">🖨Custom Products</button>
+<button onclick="showCategory('xerox', this)">📄 Xerox etc..</button>
   </div>
 </section>
 
@@ -433,53 +437,166 @@ footer{
    PRODUCT DATA
 ========================= */
 const products = [
-  // 1–10 School Stationery
-  { id:1, name:"Pens Pack", img:"pen.png", category:"school" },
-  { id:2, name:"Study Table", img:"table.png", category:"school" },
-  { id:3, name:"Highlighters", img:"highliters.png", category:"school" },
-  { id:4, name:"Notebooks", img:"notebooks.png", category:"school" },
-  { id:5, name:"Geometry Box", img:"geometry.png", category:"school" },
-  { id:6, name:"Mechanical Pencils", img:"img6.png", category:"school" },
-  { id:7, name:"Scissors", img:"img7.png", category:"school" },
-  { id:8, name:"Water Bottles", img:"img8.png", category:"school" },
-  { id:9, name:"Sticky Notes", img:"img9.png", category:"school" },
-  { id:10, name:"Withner", img:"img10.png", category:"school" },
+/* ================= SCHOOL (27) ================= */
+{id:1,name:"Pens Pack",img:"1.png",category:"school"},
+{id:2,name:"Study Table",img:"2.png",category:"school"},
+{id:3,name:"Highlighters",img:"3.png",category:"school"},
+{id:4,name:"Notebooks",img:"4.png",category:"school"},
+{id:5,name:"Geometry Box",img:"5.png",category:"school"},
+{id:6,name:"Mechanical Pencil",img:"6.png",category:"school"},
+{id:7,name:"Scissors",img:"7.png",category:"school"},
+{id:8,name:"Water bottle",img:"8.png",category:"school"},
+{id:9,name:"Sticky Notes",img:"9.png",category:"school"},
+{id:10,name:"Withner",img:"10.png",category:"school"},
+{id:11,name:"Flair Stationery Kit",img:"11.png",category:"school"},
+{id:12,name:"Coloring Pens",img:"12.png",category:"school"},
+{id:13,name:"Pencils",img:"13.png",category:"school"},
+{id:14,name:"Bubble Pens",img:"14.png",category:"school"},
+{id:15,name:"Layering Pens",img:"15.png",category:"school"},
+{id:16,name:"Metal Pens",img:"16.png",category:"school"},
+{id:17,name:"Ball Pen",img:"17.png",category:"school"},
+{id:18,name:"Compass Box",img:"18.png",category:"school"},
+{id:19,name:"Pouch",img:"19.png",category:"school"},
+{id:20,name:"Writing Pad",img:"20.png",category:"school"},
+{id:21,name:"Diary",img:"21.png",category:"school"},
+{id:22,name:"Eraser",img:"22.png",category:"school"},
+{id:23,name:"Sharpner",img:"23.png",category:"school"},
+{id:24,name:"Answer Sheet",img:"24.png",category:"school"},
+{id:25,name:"Chalk",img:"25.png",category:"school"},
+{id:26,name:"Fountain Pen",img:"26.png",category:"school"},
+{id:27,name:"Unicorn colour Pen",img:"27.png",category:"school"},
 
-  // 11–20 Gift Articles
-  { id:11, name:"Teddy", img:"img11.png", category:"gift" },
-  { id:12, name:"Greeting Card", img:"img12.png", category:"gift" },
-  { id:13, name:"Key Chains", img:"img13.png", category:"gift" },
-  { id:14, name:"Watches", img:"img14.png", category:"gift" },
-  { id:15, name:"God Photo Frame", img:"img15.png", category:"gift" },
-  { id:16, name:"Art Pieces", img:"img16.png", category:"gift" },
-  { id:17, name:"Clocks", img:"img17.png", category:"gift" },
-  { id:18, name:"Custom Mugs", img:"img18.png", category:"gift" },
-  { id:19, name:"Photo Frame", img:"img19.png", category:"gift" },
-  { id:20, name:"Desk Calender", img:"img20.png", category:"gift" },
+/* ================= GIFT (29) ================= */
+{id:28,name:"Teddy Bear",img:"28.png",category:"gift"},
+{id:29,name:"Greeting Cards",img:"29.png",category:"gift"},
+{id:30,name:"Key Chains",img:"30.png",category:"gift"},
+{id:31,name:"Wrist Watch",img:"31.png",category:"gift"},
+{id:32,name:"God Photo Frame",img:"32.png",category:"gift"},
+{id:33,name:"Art Piece",img:"33.png",category:"gift"},
+{id:34,name:"Wall Clock",img:"34.png",category:"gift"},
+{id:35,name:"Desk Calender",img:"35.png",category:"gift"},
+{id:36,name:"Panda Gift set",img:"36.png",category:"gift"},
+{id:37,name:"Car Gift set",img:"37.png",category:"gift"},
+{id:38,name:"Sterring wheel Toy",img:"38.png",category:"gift"},
+{id:39,name:"Wild Stone Perfume",img:"39.png",category:"gift"},
+{id:40,name:"Denver Perfume",img:"40.png",category:"gift"},
+{id:41,name:"Black london perfume",img:"41.png",category:"gift"},
+{id:42,name:"Train set Toy",img:"42.png",category:"gift"},
+{id:43,name:"Activity Bag",img:"43.png",category:"gift"},
+{id:44,name:"Magic Gift set",img:"44.png",category:"gift"},
+{id:45,name:"Soft Toy",img:"45.png",category:"gift"},
+{id:46,name:"Toy Car",img:"46.png",category:"gift"},
+{id:47,name:"Taj Mahal art",img:"47.png",category:"gift"},
+{id:48,name:"Love Cushion",img:"48.png",category:"gift"},
+{id:49,name:"Flower Pot",img:"49.png",category:"gift"},
+{id:50,name:"Led Herat Mirror",img:"50.png",category:"gift"},
+{id:51,name:"Hand Purse",img:"51.png",category:"gift"},
+{id:52,name:"Toy Fan",img:"52.png",category:"gift"},
+{id:53,name:"SuperHero Gift set",img:"53.png",category:"gift"},
+{id:54,name:"Piano Toy",img:"54.png",category:"gift"},
+{id:55,name:"Computer Toy",img:"55.png",category:"gift"},
+{id:56,name:"Toy Gun set",img:"56.png",category:"gift"},
 
-  // 21–30 Art & Craft
-  { id:21, name:"Acrylic Paints", img:"img21.png", category:"art" },
-  { id:22, name:"Waters Colours", img:"img22.png", category:"art" },
-  { id:23, name:"Brush Set", img:"img23.png", category:"art" },
-  { id:24, name:"Glue Gun", img:"img24.png", category:"art" },
-  { id:25, name:"Markers", img:"img25.png", category:"art" },
-  { id:26, name:"Colour Paper", img:"img26.png", category:"art" },
-  { id:27, name:"Project Papee", img:"img27.png", category:"art" },
-  { id:28, name:"Cardboard", img:"img28.png", category:"art" },
-  { id:29, name:"Colour Kit", img:"img29.png", category:"art" },
-  { id:30, name:"Clay", img:"img30.png", category:"art" },
+/* ================= ART (29) ================= */
+{id:57,name:"Acrylic Colours",img:"57.png",category:"art"},
+{id:58,name:"Water Colours",img:"58.png",category:"art"},
+{id:59,name:"Brush Set",img:"59.png",category:"art"},
+{id:60,name:"Glue Gun",img:"60.png",category:"art"},
+{id:61,name:"Marker",img:"61.png",category:"art"},
+{id:62,name:"Colour Paper",img:"62.png",category:"art"},
+{id:63,name:"Project Paper",img:"63.png",category:"art"},
+{id:64,name:"Cardboard",img:"64.png",category:"art"},
+{id:65,name:"Colour Kit",img:"65.png",category:"art"},
+{id:66,name:"Clay",img:"66.png",category:"art"},
+{id:67,name:"FeviStick",img:"67.png",category:"art"},
+{id:68,name:"Drawing Book",img:"68.png",category:"art"},
+{id:69,name:"Colour Pencil",img:"69.png",category:"art"},
+{id:70,name:"Wax Crayons",img:"70.png",category:"art"},
+{id:71,name:"Gliter Colour",img:"71.png",category:"art"},
+{id:72,name:"Carbon paper",img:"72.png",category:"art"},
+{id:73,name:"Sketch Pen",img:"73.png",category:"art"},
+{id:74,name:"Oil Pastel",img:"74.png",category:"art"},
+{id:75,name:"Transperent",img:"75.png",category:"art"},
+{id:76,name:"Colouring Tape",img:"76.png",category:"art"},
+{id:77,name:"Paper Cutter",img:"77.png",category:"art"},
+{id:78,name:"Fevicol",img:"78.png",category:"art"},
+{id:79,name:"Brown Tape",img:"79.png",category:"art"},
+{id:80,name:"Butter Paper",img:"80.png",category:"art"},
+{id:81,name:"Ice cream sticks",img:"81.png",category:"art"},
+{id:82,name:"White paper A4",img:"82.png",category:"art"},
+{id:83,name:"Stones",img:"83.png",category:"art"},
+{id:84,name:"Chart paper",img:"84.png",category:"art"},
 
-  // 31–40 Office Supplies
-  { id:31, name:"Register", img:"img31.png", category:"office" },
-  { id:32, name:"Stapler", img:"img32.png", category:"office" },
-  { id:33, name:"Calculator", img:"img33.png", category:"office" },
-  { id:34, name:"Envelops", img:"img34.png", category:"office" },
-  { id:35, name:"File", img:"img35.png", category:"office" },
-  { id:36, name:"Diary", img:"img36.png", category:"office" },
-  { id:37, name:"Pen Holder", img:"img37.png", category:"office" },
-  { id:38, name:"Writing Pad", img:"img38.png", category:"office" },
-  { id:39, name:"Punching Machine", img:"img39.png", category:"office" },
-  { id:40, name:"Stamp", img:"img40.png", category:"office" }
+
+/* ================= OFFICE (16) ================= */
+{id:86,name:"Office Register",img:"86.png",category:"office"},
+{id:87,name:"Stapler",img:"87.png",category:"office"},
+{id:88,name:"Calculator",img:"88.png",category:"office"},
+{id:89,name:"Envelope",img:"89.png",category:"office"},
+{id:90,name:"Files",img:"90.png",category:"office"},
+{id:91,name:"Diary",img:"91.png",category:"office"},
+{id:92,name:"Pen Holder",img:"92.png",category:"office"},
+{id:93,name:"Writing Pad",img:"20.png",category:"office"},
+{id:94,name:"Pinching Pad",img:"94.png",category:"office"},
+{id:95,name:"Stamp",img:"95.png",category:"office"},
+{id:96,name:"Folder",img:"96.png",category:"office"},
+{id:97,name:"Cell",img:"97.png",category:"office"},
+{id:98,name:"Staple pin",img:"98.png",category:"office"},
+{id:99,name:"Cello Water Bottle",img:"99.png",category:"office"},
+{id:100,name:"Duster",img:"100.png",category:"office"},
+{id:101,name:"Buzzer",img:"101.png",category:"office"},
+
+/* ================= SPORTS (20) ================= */
+{id:102,name:"Cricket Bat",img:"102.png",category:"sports"},
+{id:103,name:"Cricket Ball",img:"103.png",category:"sports"},
+{id:104,name:"Chess Board",img:"104.png",category:"sports"},
+{id:105,name:"Carrom Board",img:"105.png",category:"sports"},
+{id:106,name:"Shuttle Cock",img:"108.png",category:"sports"},
+{id:107,name:"Football",img:"106.png",category:"sports"},
+{id:108,name:"Skipping Rope",img:"110.png",category:"sports"},
+{id:109,name:"Cricket Stump",img:"111.png",category:"sports"},
+{id:110,name:"Carrom Coins",img:"109.png",category:"sports"},
+{id:111,name:"Badminton Racket",img:"107.png",category:"sports"},
+{id:112,name:"Ludo Board",img:"112.png",category:"sports"},
+{id:113,name:"Businessman Board Game",img:"113.png",category:"sports"},
+{id:114,name:"Carrom Powder",img:"114.png",category:"sports"},
+{id:115,name:"Rubik Cube",img:"117.png",category:"sports"},
+{id:116,name:"Moon ball",img:"116.png",category:"sports"},
+{id:117,name:"Hand Grip",img:"115.png",category:"sports"},
+{id:118,name:"Smile Ball soft",img:"118.png",category:"sports"},
+{id:119,name:"Basketb Ball",img:"119.png",category:"sports"},
+{id:120,name:"Snake & ladder",img:"120.png",category:"sports"},
+{id:121,name:"Tennis Ball",img:"121.png",category:"sports"},
+
+/* ================= DECOR (10) ================= */
+{id:122,name:"Ballons",img:"122.png",category:"decor"},
+{id:123,name:"Candles",img:"123.png",category:"decor"},
+{id:124,name:"Party Hats",img:"124.png",category:"decor"},
+{id:125,name:"Gift Wrapping Paper",img:"125.png",category:"decor"},
+{id:126,name:"Party Spray",img:"126.png",category:"decor"},
+{id:127,name:"Ribbion",img:"127.png",category:"decor"},
+{id:128,name:"Birthday Crown",img:"128.png",category:"decor"},
+{id:129,name:"Foil Balloons",img:"129.png",category:"decor"},
+{id:130,name:"Happy Birthday Banner",img:"130.png",category:"decor"},
+{id:131,name:"Double Tape",img:"131.png",category:"decor"},
+
+/* ================= CUSTOM (9) ================= */
+{id:132,name:"Custom Mug Print",img:"132.png",category:"custom"},
+{id:133,name:"Photo Frame Print",img:"133.png",category:"custom"},
+{id:134,name:"T-Shirt Printing",img:"134.png",category:"custom"},
+{id:135,name:"Custom Metal Sheet sketch photo",img:"140.png",category:"custom"},
+{id:136,name:"Keychain Photo Print",img:"136.png",category:"custom"},
+{id:137,name:"Magic Cushion Print",img:"135.png",category:"custom"},
+{id:138,name:"Custom Clock",img:"139.png",category:"custom"},
+{id:139,name:"Custom Calender",img:"137.png",category:"custom"},
+{id:140,name:"Photo ",img:"138.png",category:"custom"},
+
+/* ================= XEROX (5) ================= */
+{id:141,name:"PVC Adhaar Card",img:"141.png",category:"xerox"},
+{id:142,name:"PVC Pan card",img:"142.png",category:"xerox"},
+{id:143,name:"Money Transfer",img:"143.png",category:"xerox"},
+{id:144,name:"Xerox",img:"144.png",category:"xerox"},
+{id:145,name:"Lamination",img:"145.png",category:"xerox"}
 ];
 
 /* =========================

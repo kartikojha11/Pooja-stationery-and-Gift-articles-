@@ -320,7 +320,7 @@ footer{
 <body>
 
 <header>
-  <div class="logo">🎀 Pooja Stationers</div>
+  <div class="logo">🎀 Pooja Stationers & Gift Articles</div>
   <nav>
     <a href="#home">Home</a>
     <a href="#categories">Categories</a>
@@ -461,7 +461,7 @@ const products = [
 {id:21,name:"Diary",img:"21.png",category:"school"},
 {id:22,name:"Eraser",img:"22.png",category:"school"},
 {id:23,name:"Sharpner",img:"23.png",category:"school"},
-{id:24,name:"Answer Sheet",img:"24.png",category:"school"},
+{id:24,name:"Answer Sheet",img:"school24.png",category:"school"},
 {id:25,name:"Chalk",img:"25.png",category:"school"},
 {id:26,name:"Fountain Pen",img:"26.png",category:"school"},
 {id:27,name:"Unicorn colour Pen",img:"27.png",category:"school"},
@@ -584,7 +584,7 @@ const products = [
 {id:132,name:"Custom Mug Print",img:"132.png",category:"custom"},
 {id:133,name:"Photo Frame Print",img:"133.png",category:"custom"},
 {id:134,name:"T-Shirt Printing",img:"134.png",category:"custom"},
-{id:135,name:"Custom Metal Sheet sketch photo",img:"140.png",category:"custom"},
+{id:135,name:"Custom Metal Sheet sketch photo",img:"custom4.png",category:"custom"},
 {id:136,name:"Keychain Photo Print",img:"136.png",category:"custom"},
 {id:137,name:"Magic Cushion Print",img:"135.png",category:"custom"},
 {id:138,name:"Custom Clock",img:"139.png",category:"custom"},
@@ -594,14 +594,13 @@ const products = [
 /* ================= XEROX (5) ================= */
 {id:141,name:"PVC Adhaar Card",img:"141.png",category:"xerox"},
 {id:142,name:"PVC Pan card",img:"142.png",category:"xerox"},
-{id:143,name:"Money Transfer",img:"143.png",category:"xerox"},
+{id:143,name:"Money Transfer",img:"xerox3.png",category:"xerox"},
 {id:144,name:"Xerox",img:"144.png",category:"xerox"},
 {id:145,name:"Lamination",img:"145.png",category:"xerox"}
 ];
 
-/* =========================
-   RENDER PRODUCTS
-========================= */
+
+/* ================= RENDER PRODUCTS ================= */
 const grid = document.getElementById("productGrid");
 const title = document.getElementById("productTitle");
 const subtitle = document.getElementById("productSubtitle");
@@ -612,44 +611,45 @@ function renderProducts(list){
     const card = document.createElement("div");
     card.className = "card product";
     card.innerHTML = `
-      <img src="${p.img}" alt="${p.name}">
+    <img src="${p.img}" alt="${p.name}" onclick="openZoom('${p.img}')">
       <h3>${p.name}</h3>
       <div class="actions">
         <button class="primary" onclick="addToWishlist(${p.id})">❤️ Wishlist</button>
-        <button onclick="addToCart(${p.id})">🛒 Cart</button>
+        <button onclick="sendEnquiry('${p.name}')">💬 Enquiry</button>
       </div>
     `;
     grid.appendChild(card);
   });
 }
 
-/* =========================
-   CATEGORY FILTER
-========================= */
+/* ================= WHATSAPP ENQUIRY ================= */
+function sendEnquiry(productName){
+  const msg = `Hello Pooja Stationers, I want to enquire about: ${productName}`;
+  window.open(`https://wa.me/918200304556?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+/* ================= CATEGORY FILTER ================= */
 function showCategory(cat, btn){
   document.querySelectorAll(".category-buttons button").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");
 
-  if(cat === "popular"){
-    title.textContent = "Popular Products";
-    subtitle.textContent = "Our top selling items";
-    renderProducts(products.slice(0,10)); // 🔥 NOW 10 PRODUCTS
-  }else{
-    const names = {
-      school:"School Stationery",
-      gift:"Gift Articles",
-      art:"Art & Craft Supplies",
-      office:"Office Supplies"
-    };
-    title.textContent = names[cat];
-    subtitle.textContent = "Showing selected category products";
-    renderProducts(products.filter(p=>p.category === cat));
-  }
+  const names = {
+    school:"School Stationery",
+    gift:"Gift Articles",
+    art:"Art & Craft Supplies",
+    office:"Office Supplies",
+    sports:"Sports Items",
+    decor:"Decor Items",
+    custom:"Custom Products",
+    xerox:"Xerox Services"
+  };
+
+  title.textContent = names[cat] || "Products";
+  subtitle.textContent = "Showing selected category products";
+  renderProducts(products.filter(p=>p.category === cat));
 }
 
-/* =========================
-   WISHLIST / CART LOGIC
-========================= */
+/* ================= WISHLIST ================= */
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 function saveWishlist(){
@@ -699,8 +699,8 @@ function updateWishlistUI(){
     return "• " + p.name;
   }).join("%0A");
 
-  const waBtn = document.getElementById("sendWishlistBtn");
-  waBtn.href = "https://wa.me/918200304556?text=Hello%20Pooja%20Stationers,%20I%20am%20interested%20in:%0A" + msg;
+  document.getElementById("sendWishlistBtn").href =
+    "https://wa.me/918200304556?text=Hello%20Pooja%20Stationers,%20I%20am%20interested%20in:%0A" + msg;
 }
 
 function toggleWishlist(){
@@ -708,19 +708,124 @@ function toggleWishlist(){
 }
 
 function closeWishlist(e){
-  if(e.target.id === "wishlistPanel"){
-    toggleWishlist();
-  }
+  if(e.target.id === "wishlistPanel") toggleWishlist();
 }
 
-function addToCart(id){
-  addToWishlist(id);
+/* ================= ADMIN PANEL ================= */
+function openAdmin(){
+  document.getElementById("adminPanel").style.display = "flex";
+}
+function closeAdmin(){
+  document.getElementById("adminPanel").style.display = "none";
+}
+function addNewProduct(){
+  const name = document.getElementById("adminName").value;
+  const img = document.getElementById("adminImg").value;
+  const cat = document.getElementById("adminCat").value;
+  const newCat = document.getElementById("adminNewCat").value.trim().toLowerCase();
+
+  if(!name || !img){ alert("Fill all fields"); return; }
+
+  let finalCategory = cat;
+
+  // If admin typed a new category
+  if(newCat){
+    finalCategory = newCat;
+
+    // Add new button if not already exists
+    if(!document.querySelector(`[data-cat='${newCat}']`)){
+      const btn = document.createElement("button");
+      btn.textContent = newCat.charAt(0).toUpperCase() + newCat.slice(1);
+      btn.setAttribute("data-cat", newCat);
+      btn.onclick = function(){ showCategory(newCat, btn); };
+      document.querySelector(".category-buttons").appendChild(btn);
+    }
+  }
+
+  const newId = products.length + 1;
+  products.push({ id:newId, name:name, img:img, category:finalCategory });
+
+  alert("Product Added!");
+  closeAdmin();
+  renderProducts(products.filter(p=>p.category===finalCategory));
 }
 
 /* Init */
 renderProducts(products.slice(0,10));
 updateWishlistUI();
+
+function openZoom(img){
+  document.getElementById("zoomImg").src = img;
+  document.getElementById("zoomModal").style.display = "flex";
+}
+
+function closeZoom(){
+  document.getElementById("zoomModal").style.display = "none";
+}
+const ADMIN_PASSWORD = "admin123"; // 👈 change password here
+
+function askAdminPassword(){
+  const pass = prompt("Enter Admin Password:");
+  if(pass === ADMIN_PASSWORD){
+    openAdmin();
+  }else{
+    alert("Wrong password ❌");
+  }
+}
+const imgInput = document.getElementById("adminImg");
+if(imgInput){
+  imgInput.addEventListener("input", function(){
+    const url = this.value.trim();
+    const img = document.getElementById("previewImg");
+    if(url){
+      img.src = url;
+      img.style.display = "block";
+    } else {
+      img.style.display = "none";
+    }
+  });
+}
 </script>
+<!-- ADMIN BUTTON -->
+<button onclick="askAdminPassword()" style="position:fixed;left:15px;bottom:20px;z-index:999;padding:10px 14px;border-radius:20px;border:none;background:#222;color:#fff;font-size:12px;">
+⚙ Admin
+</button>
+
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:2000;justify-content:center;align-items:center;">
+  <div style="background:#fff;padding:20px;border-radius:16px;width:90%;max-width:400px">
+    <h3>Add New Product</h3>
+
+    <input id="adminName" placeholder="Product Name" style="width:100%;margin:6px 0;padding:8px">
+
+    <input id="adminImg" placeholder="Paste Image LINK (from imgbb)" style="width:100%;margin:6px 0;padding:8px">
+
+    <img id="previewImg" style="width:100%;margin-top:8px;border-radius:12px;display:none">
+
+    <select id="adminCat" style="width:100%;margin:6px 0;padding:8px">
+      <option value="school">School</option>
+      <option value="gift">Gift</option>
+      <option value="art">Art</option>
+      <option value="office">Office</option>
+      <option value="sports">Sports</option>
+      <option value="decor">Decor</option>
+      <option value="custom">Custom</option>
+      <option value="xerox">Xerox</option>
+    </select>
+
+    <input id="adminNewCat" placeholder="New Category Name (optional)" style="width:100%;margin:6px 0;padding:8px">
+
+    <button onclick="addNewProduct()" style="margin-top:10px;width:100%;padding:10px;background:#3a86ff;color:white;border:none;border-radius:8px">Add Product</button>
+    <button onclick="closeAdmin()" style="margin-top:6px;width:100%;padding:8px;background:#eee;border:none;border-radius:8px">Close</button>
+  </div>
+</div>
+
+<!-- PRODUCT ZOOM MODAL -->
+<div id="zoomModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:3000;justify-content:center;align-items:center;">
+  <span onclick="closeZoom()" style="position:absolute;top:20px;right:25px;font-size:30px;color:white;cursor:pointer;">✖</span>
+  <img id="zoomImg" style="max-width:90%;max-height:80%;border-radius:16px;box-shadow:0 0 30px rgba(255,255,255,0.3)">
+</div>
 
 </body>
 </html>
